@@ -13,6 +13,12 @@ class TransferThread extends Thread {
 
     public void run() {
         synchronized(from) {
+            try {
+                // Добавляем задержку
+                Thread.sleep(100);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
             synchronized(to) {
                 from.withdraw(amount);
                 to.deposit(amount);
